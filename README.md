@@ -1,6 +1,12 @@
 <div id="top"></div>
 
+<!-- This README.md is the full documentation and is kept separately at
+https://github.com/adxsoft/docs-logseq-query-builder-plugin
+ -->
+
 ## Logseq Query Builder Plugin - Documentation
+
+To install the plugin go to https://github.com/adxsoft/logseq-query-builder-plugin 
 
 The plugin is an implementation of the functions of the online tool [_Logseq Advanced Query Builder_](https://adxsoft.github.io/logseqadvancedquerybuilder/). The underlying software for both the online tool and this plugin are shared so all commands work consistently. 
 
