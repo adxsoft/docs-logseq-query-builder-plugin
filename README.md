@@ -1,5 +1,6 @@
 <div id="top"></div>
 
+
 <!-- This README.md is the full documentation and is kept separately at
 https://github.com/adxsoft/docs-logseq-query-builder-plugin
  -->
@@ -17,10 +18,15 @@ To install the plugin go to https://github.com/adxsoft/logseq-query-builder-plug
 <p>
 
 - [How to Use the plugin](#how-to-use-this-plugin)
-- [Simple Commands](#simple-commands)
+- Simple Commands
+    - [Overview](#simple-commands-overview)
+    - [Important Concept](#important-concept)
+    - [Wildcards](#wildcards)
+    - [Detailed](#commands)
 - [About](#about)
 
 <div id="how-to-use-this-plugin"></div>
+
 
 ## How to use  the plugin
 The [Simple Commands](#simple-commands) are entered into a logseq code block in the structure shown below. _Note there are three backticks that surround the commands_<br>
@@ -65,27 +71,34 @@ option: includecomments
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-<div id="simple-commands"></div>
-## Simple Commands
+<div id="simple-commands-overview"></div>
 
-Commands are designed to be simple to use. 
-Most commands have one or more arguments
-<pre>
-```
-- commandname
-    - argument
-    - argument
-- commandname
-    - argument
-    - argument
-```
-</pre>
-Optionally arguments can begin with any of these words
-```
-and
-or
-not
-```
+## Simple Commands - Overview
+_Alphabetical Order_
+
+| Simple Command | Description |
+|---|---|
+|[blocks](#blocks-command) |select logseq blocks by wildcards |
+|[blockproperties](#blockproperties-command) |select blocks by property values |
+|[blocktags](#blocktags-command) |select blocks by tag |
+|[deadline](#deadline-command) |select pages or blocks that have a deadline |
+|[deadlinebetween](#deadlinebetween-command) |select pages or blocks that have a deadline in a date range |
+|[journalsbetween](#journalsbetween-command) |only select journal pages in a date range |
+|[journalonly](#journalonly-command) |only select journal pages |
+|[namespace](#namespace-command) |select pages or blocks within a namespace |
+|[option](#option-command) | query generation option |
+|[pages](#pages-command) |select pages by wildcards |
+|[pageproperties](#pageproperties-command) |select pages by page properties |
+|[pagetags](#pagetags-command) |select pages by tag |
+|[pagelinks](#pagelinks-command) |select blocks that have links to pages<br>- note. Journal page link is your chosen format in your settings. For example <i>Dec 25th, 2022</i> |
+|[tasks](#tasks-command) |select tasks |
+|[scheduled](#scheduled-command) |select pages or blocks that are scheduled |
+|[scheduledbetween](#scheduledbetween-command) |select pages or blocks that are scheduled in a date range |
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<div id="important-concept"></div>
+
 #### Important Concept 
 Queries filter in two ways - pages or blocks
 
@@ -94,68 +107,77 @@ Queries filter in two ways - pages or blocks
 <b>blocks</b> command retrieves every single block in the graph including the special page blocks
 <small><i>- these page blocks are placed into the ?block variable and the page this block belongs to is placed in the ?page variable</i></small><br><br>
 You must choose a <b>pages</b> command <b>OR</b> a <b>blocks</b> command (you cannot use both together) 
+
+<p align="right">(<a href="#top">back to top</a>)</p>
                    
+<div id="wildcards"></div>
+
 #### Wildcards
 Wildcards can be full name or partial name using \* character<br>
-test\* - starts with text 'test'
-\*end - ends with text 'end'
-\*tax\* - contains text 'tax' anywhere
+
+- `test\*` - argument starts with text 'test'
+- `\*end` - argument ends with text 'end'
+- `\*tax\*` - argument contains text 'tax' anywhere
 
 Note.
 - Wildcards are used with pages or blocks command at this stage
 - Unfortunately Logseq Advanced queries do not yet support partial strings for properties
     - see (https://github.com/logseq/logseq/issues/7410). 
-        - Once this is implemented in Logseq I will be able to have wildcards for  _pageproperties_ and _blockproperties_ commands
+        - Once this is implemented in Logseq I will be able to have wildcards for  _pageproperties_ and _blockproperties_ commands and perhaps for partial references to tags
+
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 <div id="commands"></div>
-## Commands in Detail
+
+## Simple Commands in Detail
 
 ### Main extraction commands
-- [pages](#pages) - select pages by wildcards
-- [blocks](#blocks) - select logseq blocks by wildcards
-### Properties
+- [pages](#pages-command) - select pages by wildcards
+- [blocks](#blocks-command) - select logseq blocks by wildcards
 
-- [pageproperties](#pageproperties) - select pages by page properties
-- [blockproperties](#blockproperties) - select blocks by block properties
+### Properties
+- [pageproperties](#pageproperties-command) - select pages by page properties
+- [blockproperties](#blockproperties-command) - select blocks by block properties
 
 ### Tags
-- [pagetags](#pagetags) - select pages by tag
-- [blocktags](#blocktags) - select blocks by tag
+- [pagetags](#pagetags-command) - select pages by tag
+- [blocktags](#blocktags-command) - select blocks by tag
 
 ### Tasks
-- [tasks](#tasks) - select tasks
+- [tasks](#tasks-command) - select tasks
 
 ### Journals
-- [journalonly](#journalonly) - only select journal pages
-- [journalsbetween](#journalsbetween) - only select journal pages in a date range
+- [journalonly](#journalonly-command) - only select journal pages
+- [journalsbetween](#journalsbetween-command) - only select journal pages in a date range
 
 ### Deadline
-- [deadline](#deadline) - select pages or blocks that have a deadline
-- [deadlinebetween](#deadlinebetween) - select pages or blocks that have a deadline in a date range
+- [deadline](#deadline-command) - select pages or blocks that have a deadline
+- [deadlinebetween](#deadlinebetween-command) - select pages or blocks that have a deadline in a date range
 
 ### Scheduled
-- [scheduled](#scheduled) - select pages or blocks that are scheduled
-- [scheduledbetween](#scheduledbetween) - select pages or blocks that are scheduled in a date range     
+- [scheduled](#scheduled-command) - select pages or blocks that are scheduled
+- [scheduledbetween](#scheduledbetween-command) - select pages or blocks that are scheduled in a date range     
 
 ### Namespaces
-- [namespace](#namespace) - select pages or blocks within a namespace
+- [namespace](#namespace-command) - select pages or blocks within a namespace
 
 ### Links
-- [pagelinks](#pagelinks) - select blocks that have links to pages<br>- note. Journal page link is your chosen format in your settings. For example <i>Dec 25th, 2022</i>
+- [pagelinks](#pagelinks-command) - select blocks that have links to pages<br>- note. Journal page link is your chosen format in your settings. For example <i>Dec 25th, 2022</i>
 
 ### Query Results commands
-- [collapse](#collapse) - collapse query results
-- [expand](#collapse) - expand query results
-- [showbreadcrumbs](#showbreadcrumbs) - show query breadcrumbs
-- [hidebreadcrumbs](#hidebreadcrumbs) - hide query breadcrumbs
+- [collapse](#collapse-command) - collapse query results
+- [expand](#collapse-command) - expand query results
+- [showbreadcrumbs](#showbreadcrumbs-command) - show query breadcrumbs
+- [hidebreadcrumbs](#hidebreadcrumbs-command) - hide query breadcrumbs
 
 ### Query Builder options
-- [option](#option) - options for query generation
+- [option](#option-command) - options for query generation
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Simple Commands - Detailed Examples
-<div id="pages"></div>
+<div id="pages-command"></div>
+
 ### pages
 A page is a special block of its own that contains page-specific information including page tags, page properties etc. It is a parent to any blocks that belong to the page. Each page has a title and you can choose pages using their full title or wildcards patterns of their title.
 
@@ -198,7 +220,8 @@ A page is a special block of its own that contains page-specific information inc
     ```
 <p align="right">(<a href="#commands">back to Simple Commands</a>)</p>
 
-<div id="blocks"></div>
+<div id="blocks-command"></div>
+
 ### blocks
 Blocks are the basic unit of information in Logseq. Blocks can contain text, tags, properties, links to other pages or blocks.Each block has a content property and you can choose blocks using their content or wildcards patterns of their content.
 
@@ -225,7 +248,8 @@ Blocks are the basic unit of information in Logseq. Blocks can contain text, tag
     ```
 <p align="right">(<a href="#commands">back to Simple Commands</a>)</p>
 
-<div id="blockproperties"></div>
+<div id="blockproperties-command"></div>
+
 ### blockproperties
 Every Logseq block can contains user properties which consist of the property name and the property value. Property name cannot contains spaces. Values can be a string (in double quotes) or a number. 
 
@@ -250,7 +274,8 @@ Every Logseq block can contains user properties which consist of the property na
     ```
 <p align="right">(<a href="#commands">back to Simple Commands</a>)</p>
 
-<div id="blocktags"></div>
+<div id="blocktags-command"></div>
+
 
 ### blocktags
 Every Logseq block can contain tags. Tags can be selected by their full name (excluding #) or by wildcards of the tag full name.
@@ -284,7 +309,8 @@ Every Logseq block can contain tags. Tags can be selected by their full name (ex
         - and tagD
     ```
 <p align="right">(<a href="#commands">back to Simple Commands</a>)</p>
-<div id="deadline"></div>
+<div id="deadline-command"></div>
+
 
 ### deadline
 Every Logseq block can contain a deadline date. Include this command to select only these blocks.
@@ -296,7 +322,8 @@ Every Logseq block can contain a deadline date. Include this command to select o
     - deadline
     ```
 <p align="right">(<a href="#commands">back to Simple Commands</a>)</p>
-<div id="deadlinebetween"></div>
+<div id="deadlinebetween-command"></div>
+
 
 ### deadlinebetween
 Every Logseq block can contain a deadline date. Include this command to select only these blocks whose deadline date falls within a from and to date. Dates are specified as :today or :ddd-xxxxxx where ddd is no of days and xxxxxx is before or after.
@@ -309,7 +336,8 @@ Every Logseq block can contain a deadline date. Include this command to select o
         - :120d-before :30d-after
     ```
 <p align="right">(<a href="#commands">back to Simple Commands</a>)</p>
-<div id="journalsbetween"></div>
+<div id="journalsbetween-command"></div>
+
 
 ### journalsbetween
 Every Logseq journal belongs to a specific date. Include this command to select only those journals which fall within a from and to date. Dates are specified as :today or :ddd-xxxxxx where ddd is no of days and xxxxxx is before or after.
@@ -329,7 +357,8 @@ Every Logseq journal belongs to a specific date. Include this command to select 
         - :30d-before :today
     ```
 <p align="right">(<a href="#commands">back to Simple Commands</a>)</p>
-<div id="journalonly"></div>
+<div id="journalonly-command"></div>
+
 
 ### journalonly
 Use this command to limit the query results to journals only, pages get excluded.
@@ -341,7 +370,8 @@ Use this command to limit the query results to journals only, pages get excluded
     - journalonly
     ```
 <p align="right">(<a href="#commands">back to Simple Commands</a>)</p>
-<div id="namespace"></div>
+<div id="namespace-command"></div>
+
 
 ### namespace
 use this command to restrict query results to one of more namespaces. Note pages or blocks have to exist at the specified level of the namespace in order for you see any results. 
@@ -374,7 +404,8 @@ _(Note. If you only have one page which is physics/fluids and no page exists cal
     - scheduled
     ```
 <p align="right">(<a href="#commands">back to Simple Commands</a>)</p>
-<div id="pageproperties"></div>
+<div id="pageproperties-command"></div>
+
 
 ### pageproperties
 Every Logseq page can contains user properties which belong to the page. Page properties are not block properties, they belong only to the page. Page properties consist of the property name and the property value. Property name cannot contains spaces. Values can be a string (in double quotes) or a number. 
@@ -399,7 +430,8 @@ Every Logseq page can contains user properties which belong to the page. Page pr
         - and pagetype, "p-type1"
     ```
 <p align="right">(<a href="#commands">back to Simple Commands</a>)</p>
-<div id="pagetags"></div>
+<div id="pagetags-command"></div>
+
 
 ### pagetags
 Every Logseq page can contains tags which belong to the page. Page tags are not block tags, they belong only to the page. Page tags can be selected by their full name (excluding #) or by wildcards of the tag full name.
@@ -430,7 +462,8 @@ Every Logseq page can contains tags which belong to the page. Page tags are not 
         - and classH
     ```
 <p align="right">(<a href="#commands">back to Simple Commands</a>)</p>
-<div id="pagelinks"></div>
+<div id="pagelinks-command"></div>
+
 
 ### pagelinks
 Every logseq block can contain links to other pages or journals. This command will restrict query results to blocks that contains one or more link references. Note the date format to link to journals should be in the same format the journal titles are set in Logseq settings. 
@@ -444,7 +477,8 @@ Every logseq block can contain links to other pages or journals. This command wi
         - Jan 1st, 2019
     ```
 <p align="right">(<a href="#commands">back to Simple Commands</a>)</p>
-<div id="tasks"></div>
+<div id="tasks-command"></div>
+
 
 ### tasks
 Every Logseq block can contains one or more tasks. This command will restrict results to include (or exclude) specific task types
@@ -476,7 +510,8 @@ Every Logseq block can contains one or more tasks. This command will restrict re
         - not DOING
     ```
 <p align="right">(<a href="#commands">back to Simple Commands</a>)</p>
-<div id="scheduled"></div>
+<div id="scheduled-command"></div>
+
 
 ### scheduled
 Every Logseq block can contain a schedule date. Include this command to select only these blocks.
@@ -488,7 +523,8 @@ Every Logseq block can contain a schedule date. Include this command to select o
     - scheduled
     ```
 <p align="right">(<a href="#commands">back to Simple Commands</a>)</p>
-<div id="scheduledbetween"></div>
+<div id="scheduledbetween-command"></div>
+
 
 ### scheduledbetween
 Every Logseq block can contain a schedule date. Include this command to select only these blocks whose schedule date falls within a from and to date. Dates are specified as :today or :ddd-xxxxxx where ddd is no of days and xxxxxx is before or after.
@@ -501,7 +537,8 @@ Every Logseq block can contain a schedule date. Include this command to select o
         - :20d-before :20d-after
     ```
 <p align="right">(<a href="#commands">back to Simple Commands</a>)</p>
-<div id="option"></div>
+<div id="option-command"></div>
+
 
 ### option
 Currently there is only one option available. 
@@ -517,7 +554,8 @@ _includecomments_ option will include a comment line which explains the generate
         - Jan 1st, 2019
     ```
 <p align="right">(<a href="#commands">back to Simple Commands</a>)</p>
-<div id="collapse"></div>
+<div id="collapse-command"></div>
+
 
 ### collapse 
 This command will cause the query results to be collapsed.
@@ -529,7 +567,8 @@ This command will cause the query results to be collapsed.
     - collapse
     ```
 <p align="right">(<a href="#commands">back to Simple Commands</a>)</p>
-<div id="expand"></div>
+<div id="expand-command"></div>
+
 
 ### expand 
 This command will cause the query results to be expanded fully.
@@ -541,7 +580,8 @@ This command will cause the query results to be expanded fully.
     - expand
     ```
 <p align="right">(<a href="#commands">back to Simple Commands</a>)</p>
-<div id="showbreadcrumbs"></div>
+<div id="showbreadcrumbs-command"></div>
+
 
 ### showbreadcrumbs 
 Show breadcrumb trail (parent levels in the outline) of the retrieved blocks in query results
@@ -553,7 +593,8 @@ Show breadcrumb trail (parent levels in the outline) of the retrieved blocks in 
     - showbreadcrumb
     ```
 <p align="right">(<a href="#commands">back to Simple Commands</a>)</p>
-<div id="hidebreadcrumbs"></div>
+<div id="hidebreadcrumbs-command"></div>
+
 
 ### hidebreadcrumbs 
 Hide the breadcrumb trail (parent levels in the outline) of the retrieved blocks in query results
@@ -568,6 +609,7 @@ Hide the breadcrumb trail (parent levels in the outline) of the retrieved blocks
 
 <div id="about"></div>
 
+
 ## About
 
 #### Why this plugin?
@@ -576,7 +618,8 @@ The reasons I created this plugin are
 - For non developers they can build advanced queries and avoid having to learn coding in clojure and datalog
 - Logseq users can learn by using the examples to in this documentation
 
-_Caveat This plugin will generate the advanced query for you. It covers the basics and will save you time and allow you to experiment with advanced queries. It will not however cover all situations and the generated query may require you to add further lines_
+#### Caution
+_This plugin will generate an advanced query for you. It covers the basics and will save you time and allow you to experiment with advanced queries. It will not however cover all situations and the generated query may require you to add further lines. Further help is always available at the [Logseq Discord forum](https://discord.com/invite/KpN4eHY)_
 
 #### Built from the original online tool
 The plugin is an implementation of the functions of the online tool [_Logseq Advanced Query Builder_](https://adxsoft.github.io/logseqadvancedquerybuilder/). The underlying software for both the online tool and this plugin are shared so all commands work consistently. 
