@@ -9,6 +9,8 @@ https://github.com/adxsoft/docs-logseq-query-builder-plugin
 
 To install the plugin go to https://github.com/adxsoft/logseq-query-builder-plugin 
 
+Demonstration video is [here](https://youtu.be/EA2jLSQ_WMA)
+
 ## logseq-query-builder-plugin
 - builds advanced logseq queries from [Simple Commands](#simple-commands) contained in a logseq code block. 
 - Choosing **Advanced Query Builder** in the code blocks menu (right click on block's bullet)
