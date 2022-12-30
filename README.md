@@ -8,10 +8,6 @@ https://github.com/adxsoft/docs-logseq-query-builder-plugin
 
 To install the plugin go to https://github.com/adxsoft/logseq-query-builder-plugin 
 
-The plugin is an implementation of the functions of the online tool [_Logseq Advanced Query Builder_](https://adxsoft.github.io/logseqadvancedquerybuilder/). The underlying software for both the online tool and this plugin are shared so all commands work consistently. 
-
-Currently plugins are not supported in the mobile versions of Logseq. However you can use the online tool to buid advanced queries from a mobile browser. See the FAQ at  for detailed instructions for using the online tool. 
-
 ## logseq-query-builder-plugin
 - builds advanced logseq queries from [Simple Commands](#simple-commands) contained in a logseq code block. 
 - Choosing **Advanced Query Builder** in the code blocks menu (right click on block's bullet)
@@ -22,8 +18,7 @@ Currently plugins are not supported in the mobile versions of Logseq. However yo
 
 - [How to Use the plugin](#how-to-use-this-plugin)
 - [Simple Commands](#simple-commands)
-- [Releases](#releases)
-- [Technical Information](#technical-information)
+- [About](#about)
 
 <div id="how-to-use-this-plugin"></div>
 
@@ -570,30 +565,24 @@ Hide the breadcrumb trail (parent levels in the outline) of the retrieved blocks
     - hidebreadcrumb
     ```
 <p align="right">(<a href="#commands">back to Simple Commands</a>)</p>
-<div id="technical-information"></div>
 
-## Technical Information
+<div id="about"></div>
 
-- Originally the online tool was developed using pyscript and redeveloped in javascript. 
-- To ensure consistency between the online tool and the plugin the javascript code is shared.
-    - A variable called **_mode_** is set to _logseq-plugin_, _website_ or _local_.
-    - All modes use index.js as common code
-    - **mode _logseq-plugin_**
-            - will operate as a logseq plugin
-            - has its own _index.html_ and _package.json_ file
-            - files are contained in the _plugin-dist_ folder
-    - **mode _website_**
-            - will operate as the online tool
-            - has its own _index.html_ and _package.json_ file
-            - files are contained in the _website-dist_ folder
-    - **mode _local_**
-            - will operate locally
-            - has its own _index.html_ and _package.json_ file
-            - files are contained in the main folder
-            - has a _index.test.js_ file which is used for unit testing with the Jest Testing Library - the index.test.js file is contained in the repository for the online tool at 
-<p align="right">(<a href="#top">back to top</a>)</p>
+## About
 
-## Releases
-- v0.1
-    - Original release - Dec 23rd 2022
+#### Why this plugin?
+The reasons I created this plugin are
+- Advanced Queries have a complicated syntax that causes errors eg. missing brackets  
+- For non developers they can build advanced queries and avoid having to learn coding in clojure and datalog
+- Logseq users can learn by using the examples to in this documentation
+
+_Caveat This plugin will generate the advanced query for you. It covers the basics and will save you time and allow you to experiment with advanced queries. It will not however cover all situations and the generated query may require you to add further lines_
+
+#### Built from the original online tool
+The plugin is an implementation of the functions of the online tool [_Logseq Advanced Query Builder_](https://adxsoft.github.io/logseqadvancedquerybuilder/). The underlying software for both the online tool and this plugin are shared so all commands work consistently. 
+
+Currently plugins are not supported in the mobile versions of Logseq. However you can use the online tool to buid advanced queries from a mobile browser. See the FAQ at  for detailed instructions for using the online tool. 
+
+
+##### End of Documentation
 <p align="right">(<a href="#top">back to top</a>)</p>
